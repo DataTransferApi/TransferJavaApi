@@ -1,0 +1,241 @@
+#
+# A fatal error has been detected by the Java Runtime Environment:
+#
+#  EXCEPTION_ACCESS_VIOLATION (0xc0000005) at pc=0x10003362, pid=11088, tid=15748
+#
+# JRE version: Java(TM) SE Runtime Environment (7.0_55-b13) (build 1.7.0_55-b13)
+# Java VM: Java HotSpot(TM) Client VM (24.55-b03 mixed mode, sharing windows-x86 )
+# Problematic frame:
+# C  [rxtxSerial.dll+0x3362]
+#
+# Failed to write core dump. Minidumps are not enabled by default on client versions of Windows
+#
+# If you would like to submit a bug report, please visit:
+#   http://bugreport.sun.com/bugreport/crash.jsp
+# The crash happened outside the Java Virtual Machine in native code.
+# See problematic frame for where to report the bug.
+#
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x05297c00):  JavaThread "Thread-2" [_thread_in_native, id=15748, stack(0x05510000,0x05560000)]
+
+siginfo: ExceptionCode=0xc0000005, writing address 0x054cf938
+
+Registers:
+EAX=0x00000001, EBX=0x00000000, ECX=0x443ab1e2, EDX=0x00000001
+ESP=0x0555f498, EBP=0x0000000a, ESI=0x00000001, EDI=0x054cf930
+EIP=0x10003362, EFLAGS=0x00010246
+
+Top of Stack: (sp=0x0555f498)
+0x0555f498:   0555f53c 05297d30 0555f52c 00000001
+0x0555f4a8:   00000001 00000008 33a9387e 10004483
+0x0555f4b8:   05297d30 0555f504 00000001 0555f500
+0x0555f4c8:   00000001 0000000a 05297d30 0555f53c
+0x0555f4d8:   10019af0 10019aec 05297d30 0555f53c
+0x0555f4e8:   10019ae8 10019ae4 05297c00 34cfd9a0
+0x0555f4f8:   34cfd9a8 02afa9dd 05297d00 0555f53c
+0x0555f508:   38c5a9f8 0555f50c 00000000 0555f53c 
+
+Instructions: (pc=0x10003362)
+0x10003342:   2c 74 06 03 f0 2b d8 eb 0d 68 e8 03 00 00 e8 4b
+0x10003352:   1a 00 00 83 c4 04 3b 74 24 30 7c a7 8b 54 24 10
+0x10003362:   89 57 08 5f 8b c6 5e 5d 5b 83 c4 0c c3 e8 2f 59
+0x10003372:   00 00 83 38 04 74 1c e8 25 59 00 00 83 38 0b 74 
+
+
+Register to memory mapping:
+
+EAX=0x00000001 is an unknown value
+EBX=0x00000000 is an unknown value
+ECX=0x443ab1e2 is an unknown value
+EDX=0x00000001 is an unknown value
+ESP=0x0555f498 is pointing into the stack for thread: 0x05297c00
+EBP=0x0000000a is an unknown value
+ESI=0x00000001 is an unknown value
+EDI=0x054cf930 is an unknown value
+
+
+Stack: [0x05510000,0x05560000],  sp=0x0555f498,  free space=317k
+Native frames: (J=compiled Java code, j=interpreted, Vv=VM code, C=native code)
+C  [rxtxSerial.dll+0x3362]
+
+Java frames: (J=compiled Java code, j=interpreted, Vv=VM code)
+j  gnu.io.RXTXPort.readByte()I+0
+j  gnu.io.RXTXPort$SerialInputStream.read()I+81
+j  com.digi.xbee.api.packet.XBeePacketParser.readByteFrom(Ljava/io/InputStream;I)I+42
+j  com.digi.xbee.api.packet.XBeePacketParser.readByte(Ljava/io/InputStream;Lcom/digi/xbee/api/models/OperatingMode;)I+7
+j  com.digi.xbee.api.packet.XBeePacketParser.readBytes(Ljava/io/InputStream;Lcom/digi/xbee/api/models/OperatingMode;I)[B+21
+j  com.digi.xbee.api.packet.XBeePacketParser.parsePacket(Ljava/io/InputStream;Lcom/digi/xbee/api/models/OperatingMode;)Lcom/digi/xbee/api/packet/XBeePacket;+81
+j  com.digi.xbee.api.connection.DataReader.run()V+179
+v  ~StubRoutines::call_stub
+
+---------------  P R O C E S S  ---------------
+
+Java Threads: ( => current thread )
+  0x0529c400 JavaThread "pool-11-thread-1" [_thread_blocked, id=6656, stack(0x00ce0000,0x00d30000)]
+  0x011fc400 JavaThread "DestroyJavaVM" [_thread_blocked, id=6116, stack(0x029a0000,0x029f0000)]
+=>0x05297c00 JavaThread "Thread-2" [_thread_in_native, id=15748, stack(0x05510000,0x05560000)]
+  0x02a8b000 JavaThread "Service Thread" daemon [_thread_blocked, id=11472, stack(0x05070000,0x050c0000)]
+  0x02a83000 JavaThread "C1 CompilerThread0" daemon [_thread_blocked, id=12200, stack(0x04fe0000,0x05030000)]
+  0x02a81400 JavaThread "Attach Listener" daemon [_thread_blocked, id=15092, stack(0x04f50000,0x04fa0000)]
+  0x02a7f000 JavaThread "Signal Dispatcher" daemon [_thread_blocked, id=6120, stack(0x04ec0000,0x04f10000)]
+  0x02a14c00 JavaThread "Finalizer" daemon [_thread_blocked, id=17392, stack(0x04e30000,0x04e80000)]
+  0x02a0f400 JavaThread "Reference Handler" daemon [_thread_blocked, id=868, stack(0x04da0000,0x04df0000)]
+
+Other Threads:
+  0x02a0dc00 VMThread [stack: 0x04d10000,0x04d60000] [id=4924]
+  0x02a92c00 WatcherThread [stack: 0x05100000,0x05150000] [id=15464]
+
+VM state:not at safepoint (normal execution)
+
+VM Mutex/Monitor currently owned by a thread: None
+
+Heap
+ def new generation   total 4928K, used 1794K [0x24c50000, 0x251a0000, 0x2a1a0000)
+  eden space 4416K,  29% used [0x24c50000, 0x24d90a10, 0x250a0000)
+  from space 512K, 100% used [0x25120000, 0x251a0000, 0x251a0000)
+  to   space 512K,   0% used [0x250a0000, 0x250a0000, 0x25120000)
+ tenured generation   total 10944K, used 456K [0x2a1a0000, 0x2ac50000, 0x34c50000)
+   the space 10944K,   4% used [0x2a1a0000, 0x2a212258, 0x2a212400, 0x2ac50000)
+ compacting perm gen  total 12288K, used 1047K [0x34c50000, 0x35850000, 0x38c50000)
+   the space 12288K,   8% used [0x34c50000, 0x34d55cd0, 0x34d55e00, 0x35850000)
+    ro space 10240K,  44% used [0x38c50000, 0x390c8300, 0x390c8400, 0x39650000)
+    rw space 12288K,  52% used [0x39650000, 0x39c9f100, 0x39c9f200, 0x3a250000)
+
+Card table byte_map: [0x04b70000,0x04c20000] byte_map_base: 0x04a49d80
+
+Polling page: 0x01200000
+
+Code Cache  [0x02af0000, 0x02bb0000, 0x04af0000)
+ total_blobs=237 nmethods=83 adapters=91 free_code_cache=32025Kb largest_free_block=32793920
+
+Compilation events (10 events):
+Event: 675.689 Thread 0x02a83000   79             java.lang.AbstractStringBuilder::expandCapacity (50 bytes)
+Event: 675.689 Thread 0x02a83000 nmethod 79 0x02ba5c88 code [0x02ba5da0, 0x02ba5fd8]
+Event: 675.776 Thread 0x02a83000   80             java.util.regex.Pattern$GroupHead::match (47 bytes)
+Event: 675.777 Thread 0x02a83000 nmethod 80 0x02ba6108 code [0x02ba6220, 0x02ba634c]
+Event: 675.777 Thread 0x02a83000   81             java.util.regex.Matcher::group (112 bytes)
+Event: 675.778 Thread 0x02a83000 nmethod 81 0x02ba6508 code [0x02ba6680, 0x02ba6a44]
+Event: 675.778 Thread 0x02a83000   82             java.util.regex.Matcher::groupCount (10 bytes)
+Event: 675.778 Thread 0x02a83000 nmethod 82 0x02ba6dc8 code [0x02ba6ec0, 0x02ba6f50]
+Event: 675.779 Thread 0x02a83000   83             sun.nio.cs.UTF_8$Encoder::encodeArrayLoop (489 bytes)
+Event: 675.783 Thread 0x02a83000 nmethod 83 0x02ba6fc8 code [0x02ba7360, 0x02ba8134]
+
+GC Heap History (2 events):
+Event: 2.129 GC heap before
+{Heap before GC invocations=0 (full 0):
+ def new generation   total 4928K, used 4416K [0x24c50000, 0x251a0000, 0x2a1a0000)
+  eden space 4416K, 100% used [0x24c50000, 0x250a0000, 0x250a0000)
+  from space 512K,   0% used [0x250a0000, 0x250a0000, 0x25120000)
+  to   space 512K,   0% used [0x25120000, 0x25120000, 0x251a0000)
+ tenured generation   total 10944K, used 0K [0x2a1a0000, 0x2ac50000, 0x34c50000)
+   the space 10944K,   0% used [0x2a1a0000, 0x2a1a0000, 0x2a1a0200, 0x2ac50000)
+ compacting perm gen  total 12288K, used 1006K [0x34c50000, 0x35850000, 0x38c50000)
+   the space 12288K,   8% used [0x34c50000, 0x34d4b988, 0x34d4ba00, 0x35850000)
+    ro space 10240K,  44% used [0x38c50000, 0x390c8300, 0x390c8400, 0x39650000)
+    rw space 12288K,  52% used [0x39650000, 0x39c9f100, 0x39c9f200, 0x3a250000)
+Event: 2.134 GC heap after
+Heap after GC invocations=1 (full 0):
+ def new generation   total 4928K, used 512K [0x24c50000, 0x251a0000, 0x2a1a0000)
+  eden space 4416K,   0% used [0x24c50000, 0x24c50000, 0x250a0000)
+  from space 512K, 100% used [0x25120000, 0x251a0000, 0x251a0000)
+  to   space 512K,   0% used [0x250a0000, 0x250a0000, 0x25120000)
+ tenured generation   total 10944K, used 456K [0x2a1a0000, 0x2ac50000, 0x34c50000)
+   the space 10944K,   4% used [0x2a1a0000, 0x2a212258, 0x2a212400, 0x2ac50000)
+ compacting perm gen  total 12288K, used 1006K [0x34c50000, 0x35850000, 0x38c50000)
+   the space 12288K,   8% used [0x34c50000, 0x34d4b988, 0x34d4ba00, 0x35850000)
+    ro space 10240K,  44% used [0x38c50000, 0x390c8300, 0x390c8400, 0x39650000)
+    rw space 12288K,  52% used [0x39650000, 0x39c9f100, 0x39c9f200, 0x3a250000)
+}
+
+Deoptimization events (0 events):
+No events
+
+Internal exceptions (10 events):
+Event: 2.330 Thread 0x011fc400 Threw 0x24cc38b8 at C:\re\jdk7u55\869\hotspot\src\share\vm\prims\jvm.cpp:1244
+Event: 2.331 Thread 0x011fc400 Threw 0x24cc8938 at C:\re\jdk7u55\869\hotspot\src\share\vm\prims\jvm.cpp:1244
+Event: 2.378 Thread 0x011fc400 Threw 0x24ce4c78 at C:\re\jdk7u55\869\hotspot\src\share\vm\prims\jvm.cpp:1244
+Event: 2.428 Thread 0x011fc400 Threw 0x24cf09f8 at C:\re\jdk7u55\869\hotspot\src\share\vm\prims\jvm.cpp:1244
+Event: 675.687 Thread 0x05297c00 Threw 0x24d2f210 at C:\re\jdk7u55\869\hotspot\src\share\vm\prims\jvm.cpp:1244
+Event: 675.688 Thread 0x05297c00 Threw 0x24d3b430 at C:\re\jdk7u55\869\hotspot\src\share\vm\prims\jvm.cpp:1244
+Event: 675.688 Thread 0x05297c00 Threw 0x24d3f118 at C:\re\jdk7u55\869\hotspot\src\share\vm\prims\jvm.cpp:1244
+Event: 675.689 Thread 0x05297c00 Threw 0x24d440c0 at C:\re\jdk7u55\869\hotspot\src\share\vm\prims\jvm.cpp:1244
+Event: 675.690 Thread 0x05297c00 Threw 0x24d4bb70 at C:\re\jdk7u55\869\hotspot\src\share\vm\prims\jvm.cpp:1244
+Event: 675.691 Thread 0x05297c00 Threw 0x24d53628 at C:\re\jdk7u55\869\hotspot\src\share\vm\prims\jvm.cpp:1244
+
+Events (10 events):
+Event: 675.690 loading class 0x051e3168
+Event: 675.690 loading class 0x051e3168 done
+Event: 675.691 loading class 0x05250530
+Event: 675.691 loading class 0x05250530 done
+Event: 675.692 Thread 0x0529bc00 Thread added: 0x0529bc00
+Event: 675.692 Executing VM operation: RevokeBias
+Event: 675.692 Executing VM operation: RevokeBias done
+Event: 675.692 Thread 0x0529bc00 Thread exited: 0x0529bc00
+Event: 675.779 Thread 0x0529c400 Thread added: 0x0529c400
+Event: 675.793 Thread 0x05297400 Thread exited: 0x05297400
+
+
+Dynamic libraries:
+0x00d30000 - 0x00d5f000 	C:\Program Files (x86)\Java\jdk1.7.0_55\jre\bin\java.exe
+0x76f10000 - 0x7708b000 	C:\WINDOWS\SYSTEM32\ntdll.dll
+0x75ab0000 - 0x75b90000 	C:\WINDOWS\SYSTEM32\KERNEL32.DLL
+0x75610000 - 0x7578e000 	C:\WINDOWS\SYSTEM32\KERNELBASE.dll
+0x72a70000 - 0x72b02000 	C:\WINDOWS\system32\apphelp.dll
+0x76330000 - 0x763ab000 	C:\WINDOWS\SYSTEM32\ADVAPI32.dll
+0x73e30000 - 0x73eee000 	C:\WINDOWS\SYSTEM32\msvcrt.dll
+0x76410000 - 0x76454000 	C:\WINDOWS\SYSTEM32\sechost.dll
+0x759f0000 - 0x75a9d000 	C:\WINDOWS\SYSTEM32\RPCRT4.dll
+0x73c40000 - 0x73c5e000 	C:\WINDOWS\SYSTEM32\SspiCli.dll
+0x73c30000 - 0x73c3a000 	C:\WINDOWS\SYSTEM32\CRYPTBASE.dll
+0x73dc0000 - 0x73e18000 	C:\WINDOWS\SYSTEM32\bcryptPrimitives.dll
+0x75790000 - 0x758d7000 	C:\WINDOWS\SYSTEM32\USER32.dll
+0x76460000 - 0x765af000 	C:\WINDOWS\SYSTEM32\GDI32.dll
+0x71630000 - 0x7183f000 	C:\WINDOWS\WinSxS\x86_microsoft.windows.common-controls_6595b64144ccf1df_6.0.10586.0_none_d3c2e4e965da4528\COMCTL32.dll
+0x73ef0000 - 0x740ad000 	C:\WINDOWS\SYSTEM32\combase.dll
+0x75c40000 - 0x75c6b000 	C:\WINDOWS\SYSTEM32\IMM32.DLL
+0x69940000 - 0x699ff000 	C:\Program Files (x86)\Java\jdk1.7.0_55\jre\bin\msvcr100.dll
+0x67ce0000 - 0x68060000 	C:\Program Files (x86)\Java\jdk1.7.0_55\jre\bin\client\jvm.dll
+0x73db0000 - 0x73db6000 	C:\WINDOWS\SYSTEM32\PSAPI.DLL
+0x734c0000 - 0x734e4000 	C:\WINDOWS\SYSTEM32\WINMM.dll
+0x72fd0000 - 0x72fd8000 	C:\WINDOWS\SYSTEM32\WSOCK32.dll
+0x75c70000 - 0x75ccf000 	C:\WINDOWS\SYSTEM32\WS2_32.dll
+0x011b0000 - 0x011d3000 	C:\WINDOWS\SYSTEM32\WINMMBASE.dll
+0x765b0000 - 0x765e7000 	C:\WINDOWS\SYSTEM32\cfgmgr32.dll
+0x726c0000 - 0x726cc000 	C:\Program Files (x86)\Java\jdk1.7.0_55\jre\bin\verify.dll
+0x6cb50000 - 0x6cb70000 	C:\Program Files (x86)\Java\jdk1.7.0_55\jre\bin\java.dll
+0x6c710000 - 0x6c723000 	C:\Program Files (x86)\Java\jdk1.7.0_55\jre\bin\zip.dll
+0x69c00000 - 0x69c14000 	C:\Program Files (x86)\Java\jdk1.7.0_55\jre\bin\net.dll
+0x738e0000 - 0x7392f000 	C:\WINDOWS\system32\mswsock.dll
+0x6dd30000 - 0x6dd3f000 	C:\Program Files (x86)\Java\jdk1.7.0_55\jre\bin\nio.dll
+0x10000000 - 0x10020000 	C:\Users\Daniel\Documents\NetBeansProjects\ProyectoIntegrador\TransferJavaApi\32bits\rxtxSerial.dll
+0x718e0000 - 0x71a1f000 	C:\WINDOWS\SYSTEM32\dbghelp.dll
+
+VM Arguments:
+jvm_args: -Dfile.encoding=UTF-8 -Djava.library.path=C:\Users\Daniel\Documents\NetBeansProjects\ProyectoIntegrador\TransferJavaApi\32bits 
+java_command: xbee.java.test.MainApp
+Launcher Type: SUN_STANDARD
+
+Environment Variables:
+JAVA_HOME=C:\Program Files\Java\jdk1.8.0_91
+PATH=C:\ProgramData\Oracle\Java\javapath;C:\app\Daniel\product\11.2.0\dbhome_1\bin;C:\Program Files (x86)\Intel\iCLS Client\;C:\Program Files\Intel\iCLS Client\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files (x86)\Intel\OpenCL SDK\2.0\bin\x86;C:\Program Files (x86)\Intel\OpenCL SDK\2.0\bin\x64;c:\Program Files (x86)\Microsoft SQL Server\100\Tools\Binn\;c:\Program Files\Microsoft SQL Server\100\Tools\Binn\;c:\Program Files\Microsoft SQL Server\100\DTS\Binn\;C:\Program Files\Microsoft SQL Server\110\Tools\Binn\;C:\Program Files\Microsoft SQL Server\120\Tools\Binn\;C:\Program Files (x86)\Windows Live\Shared;C:\Program Files\MATLAB\R2014a\runtime\win64;C:\Program Files\MATLAB\R2014a\bin;C:\Program Files\MATLAB\R2014a\polyspace\bin;C:\Program Files (x86)\Skype\Phone\;C:\Python27;C:\Program Files (x86)\MiKTeX 2.9\miktex\bin\
+USERNAME=Daniel
+OS=Windows_NT
+PROCESSOR_IDENTIFIER=Intel64 Family 6 Model 58 Stepping 9, GenuineIntel
+
+
+
+---------------  S Y S T E M  ---------------
+
+OS: Windows 8.1 , 64 bit Build 9600 
+
+CPU:total 4 (2 cores per cpu, 2 threads per core) family 6 model 58 stepping 9, cmov, cx8, fxsr, mmx, sse, sse2, sse3, ssse3, sse4.1, sse4.2, popcnt, avx, aes, erms, ht, tsc, tscinvbit, tscinv
+
+Memory: 4k page, physical 6167832k(2193188k free), swap 8222696k(1791472k free)
+
+vm_info: Java HotSpot(TM) Client VM (24.55-b03) for windows-x86 JRE (1.7.0_55-b13), built on Mar 17 2014 20:01:11 by "java_re" with unknown MS VC++:1600
+
+time: Thu Jul 14 18:56:52 2016
+elapsed time: 675 seconds
+

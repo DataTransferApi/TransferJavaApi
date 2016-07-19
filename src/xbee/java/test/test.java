@@ -17,11 +17,11 @@ public class test {
     /**
      * @param args the command line arguments
      */
-    private static final String PORT = "COM1";
+    private static final String PORT = "COM5";
     // TODO Replace with the baud rate of your sender module.
     private static final int BAUD_RATE = 9600;
 
-    private static final String DATA_TO_SEND = "Hello XBee World!";
+    private static final String DATA_TO_SEND = "Prueba transmisión de datos XBEE!";
 
     public static void main(String[] args) {
         // TODO code application logic here
